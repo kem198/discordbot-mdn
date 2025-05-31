@@ -4,7 +4,6 @@ FROM emptypage/open_jtalk:22.04-1.11
 ENV DEBIAN_FRONTEND=noninteractive
 
 COPY requirements.txt /requirements.txt
-
 RUN set -x && \
     # apt install
     apt-get update -y && \
@@ -19,7 +18,7 @@ RUN set -x && \
     chown -R myuser /discordbot-mdn
 
 USER myuser
-
+COPY discordbot-mdn/ /discordbot-mdn/
 WORKDIR /discordbot-mdn
 
 CMD ["python3", "-u", "bot.py"]
