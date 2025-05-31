@@ -1,5 +1,6 @@
 FROM emptypage/open_jtalk:22.04-1.11
 
+# No waiting tzdata inputs
 ENV DEBIAN_FRONTEND=noninteractive
 
 COPY requirements.txt /requirements.txt
