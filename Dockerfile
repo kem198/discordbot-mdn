@@ -22,4 +22,4 @@ USER myuser
 
 WORKDIR /discordbot-mdn
 
-CMD python3 -u bot.py
+CMD ["python3", "-u", "bot.py"]
