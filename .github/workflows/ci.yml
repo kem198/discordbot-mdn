@@ -27,7 +27,7 @@ jobs:
           docker-compose --version
 
       - name: Run Docker Compose
-        run: docker-compose up
+        run: docker-compose up -d
         env:
           POSTGRES_USER: discordbot-mdn
           POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
