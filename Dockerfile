@@ -12,6 +12,8 @@ RUN set -x && \
     # pip install
     pip3 install --upgrade pip && \
     pip3 install -r /requirements.txt && \
+    # Ensure directory exists
+    mkdir -p /discordbot-mdn && \
     # Add new user (to prevent running as root)
     useradd myuser && \
     # Set ownership and permissions for the directory
