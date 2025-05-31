@@ -35,6 +35,12 @@ jobs:
           POSTGRES_DB: discordbot-mdn-db
           BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
 
+      - name: Run Application and Monitor Errors
+        run: |
+          docker exec discordbot-mdn_main python3 bot.py || exit 1
+        env:
+          BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
+
       - name: Stream Container Logs
         run: docker-compose logs
 
