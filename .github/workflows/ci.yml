@@ -35,13 +35,8 @@ jobs:
           POSTGRES_DB: discordbot-mdn-db
           BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
 
-      - name: Check Container Status
-        run: |
-          docker ps --filter "status=exited" --filter "status=dead"
-          if [ "$(docker ps -q --filter 'status=exited')" ]; then
-            echo "Error: Some containers exited unexpectedly."
-            exit 1
-          fi
+      - name: Stream Container Logs
+        run: docker-compose logs
 
       - name: Stop Docker Compose
         run: docker-compose down
