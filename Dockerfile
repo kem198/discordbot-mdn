@@ -2,7 +2,6 @@ FROM emptypage/open_jtalk:22.04-1.11
 
 ENV DEBIAN_FRONTEND=noninteractive
 
-COPY discordbot-mdn/ /discordbot-mdn/
 COPY requirements.txt /requirements.txt
 
 RUN set -x && \
