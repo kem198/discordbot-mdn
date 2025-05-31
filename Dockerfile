@@ -5,22 +5,18 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 COPY requirements.txt /requirements.txt
 RUN set -x && \
-    # apt install
     apt-get update -y && \
     apt-get install -y --no-install-recommends libopus-dev python3-pip tzdata && \
     apt-get clean -y && rm -rf /var/lib/apt/lists/* && \
-    # pip install
     pip3 install --upgrade pip && \
-    pip3 install -r /requirements.txt && \
-    # Ensure directory exists
-    mkdir -p /discordbot-mdn && \
-    # Add new user (to prevent running as root)
+    pip3 install -r /requirements.txt
+
+COPY discordbot-mdn/ /discordbot-mdn/
+RUN mkdir -p /discordbot-mdn && \
     useradd myuser && \
-    # Set ownership and permissions for the directory
     chown -R myuser /discordbot-mdn
 
 USER myuser
-COPY discordbot-mdn/ /discordbot-mdn/
 WORKDIR /discordbot-mdn
 
 CMD ["python3", "-u", "bot.py"]
