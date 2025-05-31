@@ -29,4 +29,4 @@ USER myuser
 WORKDIR /discordbot-mdn
 
 # コンテナ稼働時の実行コマンドを定義
-CMD /bin/sh -c "python3 -u bot.py"
+CMD python3 -u bot.py
