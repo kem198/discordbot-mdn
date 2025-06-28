@@ -302,29 +302,6 @@ async def send_on_command_error(target):
     await target.send(embed=embed)
     logging.info('メッセージを送信: %s', title)
 
-async def send_on_command_error_cooldown(target):
-    """
-    既にコマンドを実行済みであることを通知する
-
-    Parameters
-    ----------
-    target : class
-        send() を実行する対象のクラス
-    """
-    title = 'コマンドを受け付けられませんでした'
-    description = '送信されたコマンドはすでに受付済みだよ。\nしばらく待ってから再度実行してね。'
-
-    embed = discord.Embed(
-        title=title,
-        description=description,
-        color=COLOR_WARNING
-    )
-
-    embed.add_field(name='ㅤ\n❓ ヘルプを表示する', value='```/help```', inline=False)
-
-    await target.send(embed=embed)
-    logging.info('メッセージを送信: %s', title)
-
 async def send_yahho(target):
     """
     あいさつを送信する
